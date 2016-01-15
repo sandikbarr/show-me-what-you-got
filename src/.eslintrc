@@ -1,0 +1,245 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true,
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "objectLiteralShorthandMethods": true,
+    "defaultParams": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    ////////// React //////////
+    "react/display-name": 0,
+    "react/forbid-prop-types": 1,
+    "react/jsx-boolean-value": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-curly-spacing": 1,
+    "react/jsx-indent-props": 0,
+    "react/jsx-max-props-per-line": 0,
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-literals": 0,
+    "react/jsx-no-undef": 1,
+    "jsx-quotes": 1,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-danger": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-direct-mutation-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-set-state": 0,
+    "react/no-unknown-property": 1,
+    "react/prefer-es6-class": 0,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/require-extension": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1,
+
+    ////////// Possible Errors //////////
+    "comma-dangle": [1, "never"],               // W on dangling commas
+    "no-cond-assign": [2, "except-parens"],     // E on un-parenthesized assignments as conditional expression
+    "no-console": 1,                            // W on `console` use
+    "no-constant-condition": 1,                 // W on constant-valued conditional expressions
+    "no-control-regex": 1,                      // W on ASCII control characters in regular expressions
+    "no-debugger": 1,                           // W on `debugger` use
+    "no-dupe-args": 2,                          // E on duplicate argument names
+    "no-dupe-keys": 2,                          // E on duplicate key names
+    "no-duplicate-case": 2,                     // E on duplicate case labels
+    "no-empty-character-class": 1,              // W on empty character classes in regular expressions
+    "no-empty": 1,                              // W on empty block statements
+    "no-ex-assign": 1,                          // W on assignment to exception parameters
+    "no-extra-boolean-cast": 1,                 // W on useless double negation Boolean cast (!!)
+    "no-extra-parens": 0,                       // W on useless parentheses
+    "no-extra-semi": 1,                         // W on useless semicolon
+    "no-func-assign": 2,                        // E on function declaration overwrite/reassignment
+    "no-inner-declarations": [0, "both"],       // - on declarations inside nested blocks
+    "no-invalid-regexp": 2,                     // E on invalid regular expression strings
+    "no-irregular-whitespace": 2,               // E on invalid or irregular whitespace,
+    "no-negated-in-lhs": 2,                     // E on negated left operand of `in` operator
+    "no-obj-calls": 2,                          // E on invocation of certain global objects
+    "no-regex-spaces": 1,                       // W on multiple continuous spaces in regular expressions
+    "no-sparse-arrays": 1,                      // W on sparse array declarations
+    "no-unreachable": 2,                        // E on unreachable code
+    "use-isnan": 2,                             // E on comparison with NaN
+    "valid-jsdoc": 0,                           // - on invalid JSDoc
+    "valid-typeof": 2,                          // E on nonsensical typeof string comparisons
+    "no-unexpected-multiline": 1,               // W on unexpected multiline expressions
+
+    ////////// Best Practices //////////
+    "accessor-pairs": 1,                        // W on objects setters without corresponding getters
+    "block-scoped-var": 1,                      // W on invalid C-style block scope variable usage
+    "complexity": 0,                            // - on code that breaks cyclomatic complexity threshold
+    "consistent-return": 1,                     // W on inconsistent return behavior
+    "curly": [1, "all"],                        // W on block statements without curly braces
+    "default-case": 1,                          // W on switch without `default` case or `// no default` comment
+    "dot-notation": 1,                          // W on square-bracket property access
+    "dot-location": 1,                          // W on member expression with dot after new-line
+    "eqeqeq": [2, "smart"],                     // E on nonsensical type-unsafe equality operators `==` and `!=`
+    "guard-for-in": 1,                          // W on `for` `in` without `hasOwnProperty` guard
+    "no-alert": 1,                              // W on `alert`, `confirm`, and `prompt` use
+    "no-caller": 1,                             // E on `arguments.caller` and `arguments.callee` use
+    "no-div-regex": 0,                          // - on potentially confusing use of `/` in regular expressions
+    "no-else-return": 0,                        // - on unnesecary use of `else` for `if` with `return` statement
+    "no-empty-label": 2,                        // E on label for non-`switch` or iteration
+    "no-eq-null": 0,                            // - on type-unsafe equality operator with `null`
+    "no-eval": 2,                               // E on `eval` use
+    "no-extend-native": 2,                      // E on changing native object behavior
+    "no-extra-bind": 1,                         // W on useless `bind` with function expressions
+    "no-fallthrough": 1,                        // W on non-obvious `switch` fallthrough without comment
+    "no-floating-decimal": 0,                   // - on floating point literals without preceeding and succeeding digit
+    "no-implicit-coercion": 0,                  // - on implicit type conversion notation
+    "no-implied-eval": 2,                       // E on "implied" `eval` use with native functions
+    "no-invalid-this": 0,                       // - on invalid use of `this` (ES5 strict-mode restrictions)
+    "no-iterator": 2,                           // E on `__iterator__` use
+    "no-labels": 2,                             // E on labeled statement use
+    "no-lone-blocks": 1,                        // W on useless block statements
+    "no-loop-func": 1,                          // W on function declaration inside loops
+    "no-multi-spaces": 1,                       // W on useless spaces in code
+    "no-multi-str": 0,                          // - on multi-line string literals
+    "no-native-reassign": 2,                    // E on changing native object behavior
+    "no-new-func": 2,                           // E on `Function` constructor use
+    "no-new-wrappers": 1,                       // W on primitive wrapper constructor use
+    "no-new": 1,                                // W on non-assignment with constructor
+    "no-octal-escape": 2,                       // E on octal escapes in string literals
+    "no-octal": 2,                              // E on octal numeric literals
+    "no-param-reassign": 1,                     // W on parameter assignment
+    "no-process-env": 1,                        // W on `process.env` use
+    "no-proto": 2,                              // E on `__proto__` use
+    "no-redeclare": 2,                          // W on redeclaration of variables
+    "no-return-assign": 1,                      // W on assignment in return statement
+    "no-script-url": 2,                         // E on 'javascript:' URL use
+    "no-self-compare": 1,                       // W on nonsensical self-comparison
+    "no-sequences": 2,                          // E on un-parenthesized sequence use
+    "no-throw-literal": 1,                      // W on `throw` with non-`Error` prototype
+    "no-unused-expressions": 1,                 // W on unused expressions
+    "no-useless-call": 1,                       // W on unnecessary use of `.call()` and `.apply()`
+    "no-useless-concat": 1,                     // W on unnecessary concatenation of literals
+    "no-void": 1,                               // W on unnecessary use of void
+    "no-warning-comments": 0,                   // - on "warning-comments"
+    "no-with": 2,                               // E on `with` use
+    "radix": 1,                                 // W on potentially confusing use of `parseInt` without radix argument
+    "vars-on-top": 0,                           // - on hoisted variable declaration
+    "wrap-iife": [2, "outside"],                // E on un-parenthesized immediately invoked function expression
+    "yoda": 0,                                  // - on Yoda notation in conditional statements
+
+    ////////// Strict Mode //////////
+    "strict": [2, "global"],                    // E on non-global strict mode
+
+    ////////// Variables //////////
+    "init-declarations": 0,                     // - on [non-]use of variable initializations
+    "no-catch-shadow": 0,                       // - on use of `catch` argument shadowing variable
+    "no-delete-var": 2,                         // E on use of `delete` with variable
+    "no-label-var": 1,                          // W on use of label name sharing in-scope variable name
+    "no-shadow-restricted-names": 2,            // E on declaration of restricted identifiers
+    "no-shadow": 1,                             // W on shadowing declarations
+    "no-undef-init": 1,                         // W on unnecessary initilization to `undefined`
+    "no-undef": 2,                              // E on undefined identifier use
+    "no-undefined": 0,                          // - on use of `undefined`
+    "no-unused-vars": 1,                        // W on unused variable declarations
+    "no-use-before-define": 1,                  // W on variable use before declaration
+
+    ////////// Node.js & CommonJS //////////
+    "callback-return": 0,                       // forces return statements before calling callbacks in functions (callback must match pre-defined list)
+    "handle-callback-err": 0,                   // enforces error handling in callbacks (off by default) (on by default in the node environment)
+    "no-mixed-requires": 0,                     // disallow mixing regular variable and require declarations (off by default) (on by default in the node environment)
+    "no-new-require": 0,                        // disallow use of new operator with the require function (off by default) (on by default in the node environment)
+    "no-path-concat": 0,                        // disallow string concatenation with __dirname and __filename (off by default) (on by default in the node environment)
+    "no-process-exit": 0,                       // disallow process.exit() (on by default in the node environment)
+    "no-restricted-modules": 0,                 // restrict usage of specified node modules (off by default)
+    "no-sync": 0,                               // disallow use of synchronous methods (off by default)
+
+    ////////// Stylistic Issues //////////
+    "array-bracket-spacing": [1, "never"],      // W on spaces before or after array brackets
+    "block-spacing": [1, "always"],             // W on missing spaces for single line block statement brackets
+    "brace-style": 1,                           // W on none one-true-brace-style brace-style usage
+    "camelcase": [1, {"properties": "never"}],  // W on non camelcased identifiers, excluding property names
+    "comma-spacing": [1, {"after": true}],      // W on non `, ` seperator styling
+    "comma-style": [1, "last"],                 // W on non `, ` seperator styling
+    "computed-property-spacing": 0,             // - on spaces for computed property access
+    "consistent-this": 0,                       // - on inconsistent assignment of `this`
+    "eol-last": 1,                              // W on no-eol at end of file
+    "func-names": 0,                            // - on nameless function declaration
+    "func-style": 0,                            // - on non-expression/declaration function definition
+    "id-length": 0,                             // - on identifier lengths
+    "id-match": 0,                              // - on identifier matching
+    "indent": [1, 2, {"SwitchCase": 1}],        // W on non-4-space indentation
+    "key-spacing": 1,                           // W on non `: ` property definition styling
+    "lines-around-comment": 0,                  // - on lines around comments
+    "linebreak-style": [1, "unix"],             // W on non-LF line-endings
+    "max-nested-callbacks": 0,                  // - on nested callbacks
+    "new-cap": [1, {"capIsNewExceptions":["Q"]}], // W on `new` when not constructor (and vice versa), except Q
+    "new-parens": 1,                            // W on `new` without parenthesis
+    "newline-after-var": 0,                     // - on missing newline after variable declaration
+    "no-array-constructor": 1,                  // W on `Array` constructor use
+    "no-continue": 0,                           // - on `continue` in loops
+    "no-inline-comments": 0,                    // - on inline comments
+    "no-lonely-if": 1,                          // W on solely-nested `if` block
+    "no-mixed-spaces-and-tabs": 1,              // W on mixed use of spaces and tabs for indentation
+    "no-multiple-empty-lines": 0,               // - on multiple empty lines
+    "no-nested-ternary": 0,                     // - on nested ternaries
+    "no-new-object": 1,                         // W on `Object` constructor
+    "no-spaced-func": 1,                        // W on spaces between function identifiers and parenthesis
+    "no-ternary": 0,                            // - on ternary use
+    "no-trailing-spaces": 1,                    // W on trailing whitespace
+    "no-underscore-dangle": 0,                  // - on dangling underscores
+    "no-unneeded-ternary": 1,                   // W on unnecessary ternary use
+    "object-curly-spacing": [1, "never"],       // W on spaces between curly braces
+    "one-var": 0,                               // - on variable declaration style
+    "operator-assignment": 0,                   // - on assignment operators
+    "operator-linebreak": 0,                    // - on linebreaks near operators
+    "padded-blocks": 0,                         // - on padded blocks
+    "quote-props": 0,                           // - on property name quoting
+    "quotes": [1, "single"],                    // W on anything but single quotes
+    "semi-spacing": 1,                          // W on spaces before and no-spaces after semicolons
+    "semi": [1, "always"],                      // W on automatic semicolon use
+    "sort-vars": 0,                             // - on variable declaration sorting by name
+    "space-after-keywords": 1,                  // W on missing spaces after keywords
+    "space-before-blocks": 1,                   // W on missing spaces before block statements
+    "space-before-function-paren": [1, {"anonymous": "never", "named": "never"}], // W on anonymous function declarations with spaces
+    "space-in-parens": [1, "never"],            // W on unnecessary spaces inside of parentheses
+    "space-infix-ops": 1,                       // W on missing spaces around infix operators
+    "space-return-throw-case": 1,               // W on missing spaces after `return`, `throw`, and `case`
+    "space-unary-ops": [1, {"words": true, "nonwords": false}], // W on unary "word" operators missing spaces
+    "spaced-comment": 0,                        // - on comments missing spaces
+    "wrap-regex": 0,                            // - on regular expressions that are not parenthesized
+
+    ////////// ECMAScript 6 //////////
+    "allow-parens": 0,                          // - on ...
+    "arrow-spacing": 0,                         // - on ...
+    "constructor-super": 0,                     // - on ...
+    "generator-star-spacing": 0,                // - on spacing around `*` in generator functions
+    "no-class-assign": 0,                       // - on ...
+    "no-const-assign": 0,                       // - on ...
+    "no-dupe-class-members": 0,                 // - on ...
+    "no-this-before-super": 0,                  // - on ...
+    "no-var": 0,                                // - on variable declarations
+    "object-shorthand": 0,                      // - on object literal methods and properties
+    "prefer-arrow-callback": 0,                 // - on object literal methods and properties
+    "prefer-const": 0,                          // - on ...
+    "prefer-spread": 0,                         // - on ...
+    "prefer-reflect": 0,                        // - on ...
+    "prefer-template": 0,                       // - on ...
+    "require-yield": 0,                         // - on ...
+
+    ////////// Legacy //////////
+    "max-depth": 0,                             // specify the maximum depth that blocks can be nested (off by default)
+    "max-len": [0, 160, 4],                     // specify the maximum length of a line in your program (off by default)
+    "max-params": 0,                            // limits the number of parameters that can be used in the function declaration. (off by default)
+    "max-statements": 0,                        // specify the maximum number of statement allowed in a function (off by default)
+    "no-bitwise": 0,                            // disallow use of bitwise operators (off by default)
+    "no-plusplus": 0                            // disallow use of unary operators, `++` and `--` (off by default)
+  }
+}
