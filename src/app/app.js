@@ -3,8 +3,37 @@ import $ from 'jquery';
 import _ from 'lodash';
 import {Input} from 'react-bootstrap';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import {Button, OverlayTrigger, Popover} from 'react-bootstrap';
 
-let TableComponent = React.createClass ({
+let RecordShape = {
+  domain: React.PropTypes.string,
+  recordId: React.PropTypes.number,
+  active: React.PropTypes.bool,
+  adminUserName: React.PropTypes.string,
+  firstName: React.PropTypes.string,
+  lastName: React.PropTypes.string,
+  contactEmail: React.PropTypes.string,
+  tenantRelations: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      recordId: React.PropTypes.number,
+      associatedTenantId: React.PropTypes.number,
+      relation: React.PropTypes.shape({
+        id: React.PropTypes.number,
+        name: React.PropTypes.string,
+        description: React.PropTypes.string
+      })
+    })
+  ),
+  properties: React.PropTypes.shape({
+    phone: React.PropTypes.string,
+    country: React.PropTypes.string,
+    city: React.PropTypes.string,
+    clientName: React.PropTypes.string,
+    clientId: React.PropTypes.number
+  })
+};
+
+let TableComponent = React.createClass({
   propTypes: {
     records: React.PropTypes.arrayOf(
       React.PropTypes.shape(RecordShape)
@@ -79,28 +108,25 @@ let TableComponent = React.createClass ({
 
   formatActions(cell, row) {
     return (
-      <div className="dropdown">
-        <div className="action-wrapper">
-          <a id={'dropdown__action-' + row.recordId} href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i className="fa fa-ellipsis-h action-trigger"/>
-          </a>
-          <ul className="dropdown-menu dropdown-menu-right" aria-labelledby={'dropdown__action-' + row.recordId}>
-            <li><a href={'/records/' + row.recordId}>Details</a></li>
-            <li><a href="#">Edit</a></li>
-            <li><a href="#">Add Sub Record</a></li>
-            <li><a href="#">{row.active ? 'Deactivate' : 'Activate'}</a></li>
-          </ul>
-        </div>
-      </div>
+      <OverlayTrigger trigger="click" placement="left" rootClose={true}
+                      overlay={<Popover id={'popover__action-' + row.recordId}>
+                        <div className="list-group">
+                          <a className="list-group-item" href={'/records/' + row.recordId}>Details</a>
+                          <a className="list-group-item" href="#">Edit</a>
+                          <a className="list-group-item" href="#">Add Sub Record</a>
+                          <a className="list-group-item" href="#" onClick={(event) => this.toggleActive(event, row.active, row.recordId)}>{row.active ? 'Deactivate' : 'Activate'}</a>
+                        </div>
+                      </Popover>}>
+        <Button bsStyle="link" bsSize="xsmall"><i className="fa fa-ellipsis-h action-trigger"/></Button>
+      </OverlayTrigger>
     );
   },
 
-
   render() {
-    _.each(this.props.tenants, function(tenant) {
-      tenant.clientId = tenant.properties.clientId;
-      tenant.clientName = tenant.properties.clientName;
-      tenant.actions = '';
+    _.each(this.props.records, function(record) {
+      record.clientId = record.properties.clientId;
+      record.clientName = record.properties.clientName;
+      record.actions = '';
     });
 
     var selected = this.props.selectedRecord.recordId || null;
@@ -121,7 +147,7 @@ let TableComponent = React.createClass ({
               <h1>Cromuluns</h1>
             </div>
             <div className="col-xs-3 pull-bottom">
-              <div className="dropdown pull-right mb++">
+              <div className="dropdown pull-right mb++" style={{marginBottom: '20px'}}>
                 <a id="dropdown__record-filter" href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span className="caret"></span></a>
                 <ul className="dropdown-menu" aria-labelledby="dropdown__tenant-filter">
                   <li><a href="#" onClick={(event) => this.filterActiveRecords(event, 'true')}>Show Active Records <i className="fa fa-check pv- filter true"/></a></li>
@@ -129,7 +155,7 @@ let TableComponent = React.createClass ({
                   <li><a href="#" onClick={(event) => this.filterActiveRecords(event, 'all')}>Show All Records <i className="fa fa-check pv- filter all"/></a></li>
                 </ul>
               </div>
-              <span className="ph- pull-right mb++">|</span>
+              <span className="ph- pull-right mb++" style={{paddingLeft: '10px', paddingRight: '10px'}}>|</span>
               <a href="#" className="pull-right mb++" onClick={this.exportCSV}>Export <i className="glyphicon glyphicon-export"/></a>
             </div>
             <div className="col-xs-3 ph0 pull-bottom">
@@ -146,7 +172,7 @@ let TableComponent = React.createClass ({
           data={this.props.records}
           pagination={true}
           options={{sortName: 'clientName', sortOrder: 'asc',
-            onPageChange: this.onPageChange, sizePerPageList: [10, 25, 50, 100 /* All? */],
+            onPageChange: this.onPageChange, sizePerPageList: [2, 5, 10, 25, 50, 100/* All? */],
             afterColumnFilter: this.setFilteredResults, afterSearch: this.setFilteredResults}}
           selectRow={selectRowProp}
           csvFileName="records.csv">
@@ -166,176 +192,6 @@ let TableComponent = React.createClass ({
   }
 });
 
-let RecordShape = {
-  domain: React.PropTypes.string,
-  recordId: React.PropTypes.number,
-  active: React.PropTypes.bool,
-  adminUserName: React.PropTypes.string,
-  firstName: React.PropTypes.string,
-  lastName: React.PropTypes.string,
-  contactEmail: React.PropTypes.string,
-  tenantRelations: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      recordId: React.PropTypes.number,
-      associatedTenantId: React.PropTypes.number,
-      relation: React.PropTypes.shape({
-        id: React.PropTypes.number,
-        name: React.PropTypes.string,
-        description: React.PropTypes.string
-      })
-    })
-  ),
-  properties: React.PropTypes.shape({
-    phone: React.PropTypes.string,
-    country: React.PropTypes.string,
-    city: React.PropTypes.string,
-    clientName: React.PropTypes.string,
-    clientId: React.PropTypes.number
-  })
-};
+export {TableComponent as default};
 
-let records = [
-  {
-    "domain": "unknown",
-    "recordId": 1,
-    "active": true,
-    "adminUserName": "adminusername",
-    "firstName": "Rick",
-    "lastName": "Sanchez",
-    "contactEmail": "rick@schwifty.com",
-    "tenantRelations": [
-      {
-        "recordId": 2,
-        "associatedTenantId": 3,
-        "relation": {
-          "id": 1,
-          "name": "PARENT",
-          "description": "Parent association"
-        }
-      }
-    ],
-    "properties": {
-      "phone": "1234567890",
-      "country": "USA",
-      "city": "New York",
-      "clientName": "Schwifty",
-      "clientId": 1
-    }
-  },
-  {
-    "domain": "nwest.com",
-    "recordId": 2,
-    "active": false,
-    "adminUserName": "adminusername",
-    "firstName": "Morty",
-    "lastName": "Smith",
-    "contactEmail": "mortysmith@harryherpson.edu",
-    "tenantRelations": [
-      {
-        "recordId": 3,
-        "associatedTenantId": 5,
-        "relation": {
-          "id": 5,
-          "name": "PARENT",
-          "description": "Parent association"
-        }
-      }
-    ],
-    "properties": {
-      "phone": "1234567891",
-      "country": "USA",
-      "city": "Manhattan",
-      "clientName": "Smith",
-      "clientId": 2
-    }
-  },
-  {
-    "domain": "summer.com",
-    "recordId": 3,
-    "active": true,
-    "adminUserName": "adminusername",
-    "firstName": "Summer",
-    "lastName": "Smith",
-    "contactEmail": "summersmith@harryherpson.com",
-    "tenantRelations": [
-      {
-        "recordId": 5,
-        "associatedTenantId": 6,
-        "relation": {
-          "id": 5,
-          "name": "PARENT",
-          "description": "Parent association"
-        }
-      }
-    ],
-    "properties": {
-      "phone": "1234567892",
-      "country": "USA",
-      "city": "Newark",
-      "clientName": "Snuffles",
-      "clientId": 3
-    }
-  },
-  {
-    "domain": "jerry.com",
-    "recordId": 4,
-    "active": true,
-    "adminUserName": "adminusername",
-    "firstName": "Jerry",
-    "lastName": "Smith",
-    "contactEmail": "jerrysmith@smith.com",
-    "tenantRelations": [
-      {
-        "recordId": 6,
-        "associatedTenantId": 7,
-        "relation": {
-          "id": 6,
-          "name": "PARENT",
-          "description": "Parent association"
-        }
-      }
-    ],
-    "properties": {
-      "phone": "1234567893",
-      "country": "USA",
-      "city": "Tribeca",
-      "clientName": "NEAST",
-      "clientId": 4
-    }
-  },
-  {
-    "domain": "beth.com",
-    "recordId": 5,
-    "active": true,
-    "adminUserName": "adminusername",
-    "firstName": "Beth",
-    "lastName": "Smith",
-    "contactEmail": "bethsmith@beth.com",
-    "tenantRelations": [
-      {
-        "recordId": 7,
-        "associatedTenantId": 8,
-        "relation": {
-          "id": 7,
-          "name": "PARENT",
-          "description": "Parent association"
-        }
-      }
-    ],
-    "properties": {
-      "phone": "1234567894",
-      "country": "USA",
-      "city": "Brooklyn",
-      "clientName": "BETH",
-      "clientId": 5
-    }
-  }
-];
-
-let selectedRecord = {};
-
-React.render(
-  <TableComponent records={records} selectedRecord={selectedRecord}/>,
-  document.getElementById('react-bootstrap-table-example')
-);
 

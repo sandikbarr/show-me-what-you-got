@@ -28,6 +28,11 @@ module.exports = {
         loaders: ['react-hot', 'babel-loader']
       },
       {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        loader: "raw-loader"
+      },
+      {
         test: /\.css$/,
         exclude: /node_modules/,
         loader: "style-loader!css-loader"

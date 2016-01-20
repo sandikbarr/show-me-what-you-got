@@ -1,0 +1,137 @@
+[
+  {
+    "domain": "unknown",
+    "recordId": 1,
+    "active": true,
+    "adminUserName": "adminusername",
+    "firstName": "Rick",
+    "lastName": "Sanchez",
+    "contactEmail": "rick@schwifty.com",
+    "tenantRelations": [
+      {
+        "recordId": 2,
+        "associatedTenantId": 3,
+        "relation": {
+          "id": 1,
+          "name": "PARENT",
+          "description": "Parent association"
+        }
+      }
+    ],
+    "properties": {
+      "phone": "1234567890",
+      "country": "USA",
+      "city": "New York",
+      "clientName": "Schwifty",
+      "clientId": 1
+    }
+  },
+  {
+    "domain": "nwest.com",
+    "recordId": 2,
+    "active": false,
+    "adminUserName": "adminusername",
+    "firstName": "Morty",
+    "lastName": "Smith",
+    "contactEmail": "mortysmith@harryherpson.edu",
+    "tenantRelations": [
+      {
+        "recordId": 3,
+        "associatedTenantId": 5,
+        "relation": {
+          "id": 5,
+          "name": "PARENT",
+          "description": "Parent association"
+        }
+      }
+    ],
+    "properties": {
+      "phone": "1234567891",
+      "country": "USA",
+      "city": "Manhattan",
+      "clientName": "Smith",
+      "clientId": 2
+    }
+  },
+  {
+    "domain": "summer.com",
+    "recordId": 3,
+    "active": true,
+    "adminUserName": "adminusername",
+    "firstName": "Summer",
+    "lastName": "Smith",
+    "contactEmail": "summersmith@harryherpson.com",
+    "tenantRelations": [
+      {
+        "recordId": 5,
+        "associatedTenantId": 6,
+        "relation": {
+          "id": 5,
+          "name": "PARENT",
+          "description": "Parent association"
+        }
+      }
+    ],
+    "properties": {
+      "phone": "1234567892",
+      "country": "USA",
+      "city": "Newark",
+      "clientName": "Snuffles",
+      "clientId": 3
+    }
+  },
+  {
+    "domain": "jerry.com",
+    "recordId": 4,
+    "active": true,
+    "adminUserName": "adminusername",
+    "firstName": "Jerry",
+    "lastName": "Smith",
+    "contactEmail": "jerrysmith@smith.com",
+    "tenantRelations": [
+      {
+        "recordId": 6,
+        "associatedTenantId": 7,
+        "relation": {
+          "id": 6,
+          "name": "PARENT",
+          "description": "Parent association"
+        }
+      }
+    ],
+    "properties": {
+      "phone": "1234567893",
+      "country": "USA",
+      "city": "Tribeca",
+      "clientName": "NEAST",
+      "clientId": 4
+    }
+  },
+  {
+    "domain": "beth.com",
+    "recordId": 5,
+    "active": true,
+    "adminUserName": "adminusername",
+    "firstName": "Beth",
+    "lastName": "Smith",
+    "contactEmail": "bethsmith@beth.com",
+    "tenantRelations": [
+      {
+        "recordId": 7,
+        "associatedTenantId": 8,
+        "relation": {
+          "id": 7,
+          "name": "PARENT",
+          "description": "Parent association"
+        }
+      }
+    ],
+    "properties": {
+      "phone": "1234567894",
+      "country": "USA",
+      "city": "Brooklyn",
+      "clientName": "BETH",
+      "clientId": 5
+    }
+  }
+]
